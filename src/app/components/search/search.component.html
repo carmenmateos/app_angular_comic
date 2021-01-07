@@ -1,0 +1,43 @@
+<h1>Buscando: <small>{{name_search}}</small></h1>
+
+<div class="row" *ngIf="my_hero==undefined, else results">
+
+
+    <div class="alert alert-info" role="alert">
+        No existen resultados con el término:{{name_search}}
+    </div>
+    <hr>
+</div>
+
+<ng-template #results>
+
+    <!-- <app-heroe-tarjeta [hero]="hero" [index]="i" *ngFor="let hero of heros; let i=index"></app-heroe-tarjeta> -->
+
+    <div>
+        <h1>
+            {{my_hero.nombre}}<small> ({{my_hero.aparicion | date: 'y'}} )</small>
+        </h1>
+        <hr>
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <img [src]='my_hero.img' class='img-fluid' alt=''>
+                <br><br>
+                <a [routerLink]='["/heroes" ]' class="btn btn-outline-danger btn-block">Return</a>
+            </div>
+
+            <div class=' col-md-8 '>
+                <h3>{{my_hero.nombre}}</h3>
+                <hr>
+                <p> {{my_hero.bio}}</p>
+                <div class="col-md-8 div-hero">
+                    <img class="photo-hero" *ngIf="my_hero.casa == 'Marvel'" src=" assets/img/marvel.png " alt=" ">
+                    <img class="photo-hero" *ngIf="my_hero.casa == 'DC'" src="assets/img/dc_.png " alt=" ">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</ng-template>
